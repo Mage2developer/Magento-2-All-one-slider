@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="mage2_developer" translate="label" sortOrder="10">
+            <label>Mage2 Developer</label>
+        </tab>
+        <section id="mage2_allinone_section" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>All in One</label>
+            <tab>mage2_developer</tab>
+            <resource>Mage2_Allinone::mage2_configuration</resource>
+            <group id="general" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Options</label>
+                <field id="enabled" translate="label" type="select" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Feature Products Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="featureproductcount" translate="label" type="text" sortOrder="2" showInDefault="1" showInStore="1" showInWebsite="1">
+                    <label>Product Number</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <validate>validate-number</validate>
+                    <comment><![CDATA[Default its take as 16]]></comment>
+                </field>
+                <field id="featuretitle" translate="label" type="text" sortOrder="3" showInDefault="1" showInStore="1" showInWebsite="1">
+                    <label>Block Title</label>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                    <comment><![CDATA[Block Title default its appear as Feature Product]]></comment>
+                </field>
+                <field id="newenabled" translate="label" type="select" sortOrder="4" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>New Products Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                
+                <field id="newproductcount" translate="label" type="text" sortOrder="5" showInDefault="1" showInStore="1" showInWebsite="1">
+                    <label>Product Number</label>
+                    <depends>
+                        <field id="newenabled">1</field>
+                    </depends>
+                    <validate>validate-number</validate>
+                    <comment><![CDATA[Default its take as 16]]></comment>
+                </field>
+                <field id="newtitle" translate="label" type="text" sortOrder="6" showInDefault="1" showInStore="1" showInWebsite="1">
+                    <label>Block Title</label>
+                    <depends>
+                        <field id="newenabled">1</field>
+                    </depends>
+                    <comment><![CDATA[Block Title default its appear as New Product]]></comment>
+                </field>
+                
+                <field id="mostenabled" translate="label" type="select" sortOrder="7" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Viewable Products Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="mostproductcount" translate="label" type="text" sortOrder="8" showInDefault="1" showInStore="1" showInWebsite="1">
+                    <label>Product Number</label>
+                    <depends>
+                        <field id="mostenabled">1</field>
+                    </depends>
+                    <validate>validate-number</validate>
+                    <comment><![CDATA[Default its take as 16]]></comment>
+                </field>
+                <field id="mosttitle" translate="label" type="text" sortOrder="9" showInDefault="1" showInStore="1" showInWebsite="1">
+                    <label>Block Title</label>
+                    <depends>
+                        <field id="mostenabled">1</field>
+                    </depends>
+                    <comment><![CDATA[Block Title default its appear as Most Viewable Product]]></comment>
+                </field>
+                
+                <field id="bestenabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Bestseller Enable</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="bestproductcount" translate="label" type="text" sortOrder="11" showInDefault="1" showInStore="1" showInWebsite="1">
+                    <label>Product Number</label>
+                    <depends>
+                        <field id="bestenabled">1</field>
+                    </depends>
+                    <validate>validate-number</validate>
+                    <comment><![CDATA[Default its take as 16]]></comment>
+                </field>
+                <field id="besttitle" translate="label" type="text" sortOrder="12" showInDefault="1" showInStore="1" showInWebsite="1">
+                    <label>Block Title</label>
+                    <depends>
+                        <field id="bestenabled">1</field>
+                    </depends>
+                    <comment><![CDATA[Block Title default its appear as Bestseller Product]]></comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

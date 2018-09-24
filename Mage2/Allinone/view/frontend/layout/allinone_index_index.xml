@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+    <body>
+        <referenceContainer name="content">
+            <block class="Mage2\Allinone\Block\Index" name="feature" template="feature.phtml" />
+            <block class="Mage2\Allinone\Block\Index" name="new" template="new.phtml" />
+            <block class="Mage2\Allinone\Block\Index" name="most-viewed" template="most-viewed.phtml" />
+            <block class="Mage2\Allinone\Block\Index" name="best-seller" template="best-seller.phtml" />
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,14 @@
+/* 
+    Document   : custom
+    Created on : May 29, 2018, 5:55:23 PM
+    Author     : Admin
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+
+
+.feature-item-img , .most-viewed-img , .new-item-img , .best-item-img { float: left; clear: both; width: 100%; text-align: center; }
+.feature-item-name , .most-viewed-name ,.new-item-name ,.best-item-name{ text-align: center; width: 100%; float: left;}
+.feature-item-detail , .most-viewed-detail, .new-item-detail , .best-item-detail { float: left; clear: both; margin-top: 10px; text-align: center; width: 100%; }
+.feature-item-price , .most-viewed-price, .new-item-price , .best-item-price { margin-bottom: 10px; }
