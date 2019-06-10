@@ -23,7 +23,7 @@
 <p>{{block class="Mage2\Allinone\Block\Index" template="Mage2_Allinone::new.phtml"}}</p>
 <p></p>
 <p>In the case of any other queries regarding this extension:</p>
-<p>Contact us at <b>sales@mage2developer.com</b> or Skype : <b>mage2developer</b> and we will be all happy to assist you!</p>
+<p>Contact us at <b>mage2developer@gmail.com || shishangiya.yogesh@gmail.com </b> or Skype : <b>mage2developer</b> and we will be all happy to assist you!</p>
 
 <p><b>Compitable :- </b> <b>Magento 2.0.0 to 2.3 </b></p>
 
