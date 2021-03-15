@@ -1,21 +1,38 @@
 <?php
+/**
+ * Product Name: Mage2 All in one
+ * Module Name: Mage2_Allinone
+ * Created By: Yogesh Shishangiya
+ */
+
+declare(strict_types=1);
 
 namespace Mage2\Allinone\Controller;
 
-abstract class Index extends \Magento\Framework\App\Action\Action
-{
+use Magento\Framework\App\Action;
+use Magento\Framework\View\Result\PageFactory;
 
+/**
+ * Class Index
+ */
+abstract class Index extends Action\Action
+{
+    /**
+     * @var PageFactory
+     */
     protected $resultPageFactory;
 
+    /**
+     * Index constructor.
+     *
+     * @param Action\Context $context
+     * @param PageFactory $resultPageFactory
+     */
     public function __construct(
-        \Magento\Framework\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory,
-
-        array $data = []
-    )
-    {
+        Action\Context $context,
+        PageFactory $resultPageFactory
+    ) {
         $this->resultPageFactory = $resultPageFactory;
-        parent::__construct($context , $data);
+        parent::__construct($context);
     }
 }
-?>

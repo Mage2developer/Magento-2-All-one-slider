@@ -1,104 +1,277 @@
 <?php
+/**
+ * Product Name: Mage2 All in one
+ * Module Name: Mage2_Allinone
+ * Created By: Yogesh Shishangiya
+ */
+
+declare(strict_types=1);
 
 namespace Mage2\Allinone\Block;
 
 use Magento\Catalog\Api\CategoryRepositoryInterface;
+use Magento\Catalog\Block\Product\ListProduct;
+use Magento\Catalog\Block\Product\Context;
+use Magento\Framework\Data\Helper\PostHelper;
+use Magento\Framework\Url\Helper\Data;
+use Magento\Catalog\Model\Layer\Resolver;
+use Magento\Catalog\Model\ProductFactory;
+use Magento\Catalog\Block\Product\AbstractProduct;
+use Magento\Catalog\Helper\Image;
+use Mage2\Allinone\Model\Config;
+use Mage2\Allinone\Model\Collection;
 
-class Index extends  \Magento\Catalog\Block\Product\ListProduct
+/**
+ * Class Index
+ */
+class Index extends ListProduct
 {
+    /**
+     * @var Collection
+     */
     protected $productCollection;
-    
-    protected $productloader; 
-    
-    protected $abstractProduct;  
-    
+
+    /**
+     * @var ProductFactory
+     */
+    protected $productloader;
+
+    /**
+     * @var AbstractProduct
+     */
+    protected $abstractProduct;
+
+    /**
+     * @var PostHelper
+     */
     protected $postDataHelper;
 
+    /**
+     * @var Config
+     */
+    protected $extConfig;
+
+    /**
+     * @var Image
+     */
+    protected $image;
+
+    /**
+     * Index constructor.
+     *
+     * @param Context $context
+     * @param PostHelper $postDataHelper
+     * @param Data $urlHelper
+     * @param Resolver $layerResolver
+     * @param CategoryRepositoryInterface $categoryRepository
+     * @param ProductFactory $productloader
+     * @param AbstractProduct $abstractProduct
+     * @param Config $extConfig
+     * @param Collection $productCollection
+     * @param Image $image
+     */
     public function __construct(
-        \Magento\Catalog\Block\Product\Context $context,
-        \Magento\Framework\Data\Helper\PostHelper $postDataHelper,
-        \Magento\Framework\Url\Helper\Data $urlHelper,
-        \Magento\Catalog\Model\Layer\Resolver $layerResolver, 
+        Context $context,
+        PostHelper $postDataHelper,
+        Data $urlHelper,
+        Resolver $layerResolver,
         CategoryRepositoryInterface $categoryRepository,
-        \Magento\Catalog\Model\ResourceModel\Product\CollectionFactory  $productCollectionFactory,    
-        \Magento\Catalog\Model\ProductFactory $productloader,
-        \Magento\Catalog\Block\Product\AbstractProduct $abstractProduct,
-        \Mage2\Allinone\Model\Config $extConfig,    
-        \Mage2\Allinone\Model\Collection $productCollection    
-    )
-    {
+        ProductFactory $productloader,
+        AbstractProduct $abstractProduct,
+        Config $extConfig,
+        Collection $productCollection,
+        Image $image
+    ) {
         $this->productCollection = $productCollection;
-        $this->postDataHelper = $postDataHelper;
-        $this->urlHelper = $urlHelper;
-        $this->catalogLayer = $layerResolver->get();
-        $this->extConfig = $extConfig;
-        $this->productloader = $productloader;
-        $this->abstractProduct = $abstractProduct;
-        parent::__construct($context, $postDataHelper,$layerResolver,$categoryRepository, $urlHelper);
+        $this->postDataHelper    = $postDataHelper;
+        $this->urlHelper         = $urlHelper;
+        $this->catalogLayer      = $layerResolver->get();
+        $this->extConfig         = $extConfig;
+        $this->productloader     = $productloader;
+        $this->abstractProduct   = $abstractProduct;
+        $this->image             = $image;
+        parent::__construct($context, $postDataHelper, $layerResolver, $categoryRepository, $urlHelper);
     }
 
-    public function featureProductCollection(){
+    /**
+     * Retrieve featured products collection
+     *
+     * @return \Magento\Catalog\Model\ResourceModel\Product\Collection
+     */
+    public function featureProductCollection()
+    {
         return $this->productCollection->getFeatureProducts();
     }
-    
-    public function featureBlockTitle(){
+
+    /**
+     * Retrieve featured product block title
+     *
+     * @return mixed|string
+     */
+    public function featureBlockTitle()
+    {
         return $this->extConfig->getFeatureBlockTitle();
     }
-    
-    public function newProductCollection(){
+
+    /**
+     * Retrieve new products collection
+     *
+     * @return \Magento\Catalog\Model\ResourceModel\Product\Collection
+     */
+    public function newProductCollection()
+    {
         return $this->productCollection->getNewProducts();
     }
-    
-    public function newBlockTitle(){
+
+    /**Retrieve new product block title
+     *
+     * @return mixed|string
+     */
+    public function newBlockTitle()
+    {
         return $this->extConfig->getNewBlockTitle();
     }
 
-    public function bestSellerCollection(){
-       return $this->productCollection->getBestsellerProducts();
+    /**
+     * Retrieve best seller products collection
+     *
+     * @return \Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection
+     */
+    public function bestSellerCollection()
+    {
+        return $this->productCollection->getBestsellerProducts();
     }
-    
-     public function bestBlockTitle(){
+
+    /**
+     * Retrieve best seller product block title
+     *
+     * @return mixed|string
+     */
+    public function bestBlockTitle()
+    {
         return $this->extConfig->getBestBlockTitle();
     }
-    
-    public function mostViewedCollection(){
+
+    /**
+     * Retrieve most viewed products collection
+     *
+     * @return \Magento\Framework\DataObject[]
+     */
+    public function mostViewedCollection()
+    {
         return $this->productCollection->getMostViewedProducts();
     }
-    
-    public function mostBlockTitle(){
+
+    /**
+     * Retrieve most viewed products block title
+     *
+     * @return mixed|string
+     */
+    public function mostBlockTitle()
+    {
         return $this->extConfig->getMostBlockTitle();
     }
-    
+
+    /**
+     * Get featured products block enabled or not
+     *
+     * @return boolean
+     */
     public function featureStatus()
     {
-         return $this->extConfig->getFeatureEnable();
+        return $this->extConfig->getFeatureEnable();
     }
-    
+
+    /**
+     * Get new products block enabled or not
+     *
+     * @return boolean
+     */
     public function newStatus()
     {
-         return $this->extConfig->getNewEnable();
+        return $this->extConfig->getNewEnable();
     }
-    
+
+    /**
+     * Get most viewed products block enabled or not
+     *
+     * @return boolean
+     */
     public function mostStatus()
     {
-         return $this->extConfig->getMostEnable();
+        return $this->extConfig->getMostEnable();
     }
-    
+
+    /**
+     * Get best seller products block enabled or not
+     *
+     * @return boolean
+     */
     public function bestStatus()
     {
-         return $this->extConfig->getBestEnable();
+        return $this->extConfig->getBestEnable();
     }
-    
+
+    /**
+     * Get product by identifier
+     *
+     * @param $id
+     * @return \Magento\Catalog\Model\Product
+     */
     public function getProductById($id)
     {
         return $this->productloader->create()->load($id);
     }
-    
-    public function getPrice($product){
+
+    /**
+     * Get product price from product object
+     *
+     * @param $product
+     * @return string
+     */
+    public function getPrice($product)
+    {
         return $this->abstractProduct->getProductPrice($product);
     }
-    
-    public function getProductImage($product){
-        return $this->abstractProduct->getImage($product, 'latest_collection_list')->getImageUrl(); 
+
+    /**
+     * Get product image from product object
+     *
+     * @param $product
+     * @return string
+     */
+    public function getProductImage($product)
+    {
+        return $this->abstractProduct->getImage($product, 'latest_collection_list')->getImageUrl();
+    }
+
+    /**
+     * Get product image url
+     *
+     * @param $product
+     * @return string
+     */
+    public function getProductImageUrl($product)
+    {
+        return $this->image->init($product, 'product_page_image_large')
+            ->constrainOnly(false)
+            ->keepAspectRatio(true)
+            ->keepFrame(true)
+            ->resize(256, 329)
+            ->getUrl();
+    }
+
+    /**
+     * Get add to cart button post data
+     *
+     * @param $product
+     * @return string
+     */
+    public function getAddToCartButtonPostData($product)
+    {
+        return $this->postDataHelper->getPostData(
+            $this->getAddToCartUrl($product),
+            ['product' => $product->getEntityId()]
+        );
     }
 }

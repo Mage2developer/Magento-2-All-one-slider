@@ -1,0 +1,20 @@
+{
+    "name": "mage2/module-allinone",
+    "description": "Mage2 All in one",
+    "require": {
+        "php": "^7.2"
+    },
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "BSD-3-Clause"
+    ],
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Mage2\\Allinone\\": ""
+        }
+    }
+}

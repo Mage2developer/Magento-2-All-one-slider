@@ -1,15 +1,23 @@
 <?xml version="1.0"?>
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+<!--
+/**
+ * Product Name: Mage2 All in one
+ * Module Name: Mage2_Allinone
+ * Created By: Yogesh Shishangiya
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
     <acl>
         <resources>
-            <resource id="Magento_Backend::admin">
-                <resource id="Magento_Backend::stores">
-                    <resource id="Magento_Backend::stores_settings">
-                        <resource id="Magento_Config::config">
-                            <resource id="Mage2_Allinone::mage2_configuration" title="Mage2Developer" sortOrder="51" />
+            <resource id="Magento_Backend::admin" title="Magento Admin">
+                <resource id="Magento_Backend::stores" title="Stores">
+                    <resource id="Magento_Backend::stores_settings" title="Settings">
+                        <resource id="Magento_Config::config" title="Configuration">
+                            <resource id="Mage2_Allinone::mage2_configuration" title="Mage2Developer" sortOrder="51"/>
                         </resource>
                     </resource>
-                </resource>        
+                </resource>
             </resource>
         </resources>
     </acl>

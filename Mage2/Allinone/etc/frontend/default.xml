@@ -1,6 +1,14 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+<!--
+/**
+ * Product Name: Mage2 All in one
+ * Module Name: Mage2_Allinone
+ * Created By: Yogesh Shishangiya
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
     <head>
-          <css src="css/mycss.css" />
-    </head> 
+        <css src="css/mycss.css"/>
+    </head>
 </page>

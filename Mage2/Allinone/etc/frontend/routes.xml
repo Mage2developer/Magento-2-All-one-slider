@@ -1,7 +1,16 @@
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
+<?xml version="1.0"?>
+<!--
+/**
+ * Product Name: Mage2 All in one
+ * Module Name: Mage2_Allinone
+ * Created By: Yogesh Shishangiya
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
         <route id="allinone" frontName="allinone">
-            <module name="Mage2_Allinone" />
+            <module name="Mage2_Allinone"/>
         </route>
     </router>
 </config>

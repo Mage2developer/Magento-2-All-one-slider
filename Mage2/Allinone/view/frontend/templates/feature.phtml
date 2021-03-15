@@ -1,95 +1,95 @@
-<?php  $feature_products = $block->featureProductCollection();
-       $_helper = $this->helper('Magento\Catalog\Helper\Output');
-       $imageBlock = $block->getLayout()->createBlock('Magento\Catalog\Block\Product\Image');
-       $status = $block->featureStatus();
-       $featurePrdCount = count($feature_products);
+<?php
+/**
+ * Product Name: Mage2 All in one
+ * Module Name: Mage2_Allinone
+ * Created By: Yogesh Shishangiya
+ */
 
-if($status)
-{
-	if($featurePrdCount > 0)
-	{ 
-?> 
+$feature_products = $block->featureProductCollection();
+$status           = $block->featureStatus();
+$featurePrdCount  = count($feature_products);
 
-<div class="feature-product">
-    <div class="feature-title">
-        <h3>
-            <?php echo $block->featureBlockTitle(); ?>
-        </h3>
-    </div>
-    <div id="feature-products" class="owl-carousel owl-theme feature-products">
-        
-<?php 
-	foreach($feature_products as $product)
-	{
-            $product_data = $block->getProductById($product->getId());
-            $product_url = $product_data->getProductUrl();
-            $imageUrl = $this->helper('Magento\Catalog\Helper\Image')
-                ->init($product_data, 'product_page_image_large')
-                ->constrainOnly(FALSE)
-                ->keepAspectRatio(TRUE)
-                ->keepFrame(TRUE)
-                ->resize(256, 329)
-                ->getUrl();
-            
-?>
-        <div class="feature-item">
-            <a href='<?php echo $product_url ?>' class='feature-item-img'>
-                <img src="<?php echo $imageUrl ?>" alt="<?php echo $product_data->getName() ?>" />
-            </a>                                
-            <a href='<?php echo $product_url ?>' class='feature-item-name'>
-                    <?php echo $product_data->getName() ?>
-            </a>
-           <div class="feature-item-detail">
-                <div class="feature-item-price">
-                    <?php  echo $block->getProductPrice($product_data);?>
-                </div>
-                <div class="feature-item-action">
-                    <div class="feature-item-addtocart">
-                            <?php if ($product_data->getTypeInstance()->hasRequiredOptions($product_data)): ?>
-                                <button class="action tocart primary" data-mage-init='{"redirectUrl":{"url":"<?php /* @escapeNotVerified */ echo $block->getAddToCartUrl($product_data) ?>"}}'
-                                        type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
-                                    <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
-                                </button>
-                            <?php else: ?>
-                            <?php
-                                $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
-                                $postData = $postDataHelper->getPostData($block->getAddToCartUrl($product_data), ['product' => $product_data->getEntityId()]);
+if ($status) {
+    if ($featurePrdCount > 0) {
+        ?>
 
-                            ?>
-                                <button class="action tocart primary" data-post='<?php /* @escapeNotVerified */ echo $postData; ?>' type="button" title="<?php /* @escapeNotVerified */ echo __('Add to Cart') ?>">
-                                    <span><?php /* @escapeNotVerified */ echo __('Add to Cart') ?></span>
-                                </button>
-                            <?php endif; ?>
-                        </div> 
-                    </div> 
+        <div class="feature-product">
+            <div class="feature-title">
+                <h3>
+                    <?= /* @noEscape */ $block->featureBlockTitle(); ?>
+                </h3>
             </div>
-        </div>      
-<?php } ?>        
-        
-	</div>
-</div>
+            <div id="feature-products" class="owl-carousel owl-theme feature-products">
 
-<script>
-    require([
-        'jquery',
-        'feature'
-        ], function () {
-            'use strict';
-            jQuery("#feature-products").owlCarousel({
-                autoPlay: 3000, //3000 Set AutoPlay to 3 seconds
-                margin:10,
-                items : 4,
-                itemsDesktop : [1199,4],
-                itemsDesktopSmall : [979,3],
-                itemsTablet : [768,2],
-                itemsMobile : [479,1],
-                navigation : true,
-                pagination : false
-          });
-    });
-</script>
+                <?php
+                foreach ($feature_products as $product) {
+                    $product_data = $block->getProductById($product->getId());
+                    $product_url  = $product_data->getProductUrl();
+                    $imageUrl     = $block->getProductImageUrl($product_data);
+                    ?>
+                    <div class="feature-item">
+                        <a href='<?= /* @noEscape */ $product_url ?>' class='feature-item-img'>
+                            <img src="<?= /* @noEscape */ $imageUrl ?>"
+                                 alt="<?= /* @noEscape */ $product_data->getName() ?>"/>
+                        </a>
+                        <a href='<?= /* @noEscape */ $product_url ?>' class='feature-item-name'>
+                            <?= /* @noEscape */ $product_data->getName() ?>
+                        </a>
+                        <div class="feature-item-detail">
+                            <div class="feature-item-price">
+                                <?= /* @noEscape */ $block->getProductPrice($product_data); ?>
+                            </div>
+                            <div class="feature-item-action">
+                                <div class="feature-item-addtocart">
+                                    <?php if ($product_data->getTypeInstance()->hasRequiredOptions($product_data)): ?>
+                                        <button class="action tocart primary"
+                                                data-mage-init='{"redirectUrl":{"url":"<?= /* @noEscape */
+                                                    $block->getAddToCartUrl($product_data) ?>"}}'
+                                                type="button"
+                                                title="<?= /* @noEscape */ __('Add to Cart') ?>">
+                                            <span><?= /* @noEscape */ __('Add to Cart') ?></span>
+                                        </button>
+                                    <?php else: ?>
+                                        <?php
+                                        $postData = $block->getAddToCartButtonPostData($product_data);
+                                        ?>
+                                        <button class="action tocart primary"
+                                                data-post='<?= /* @noEscape */ $postData; ?>'
+                                                type="button"
+                                                title="<?= /* @noEscape */ __('Add to Cart') ?>">
+                                            <span><?= /* @noEscape */ __('Add to Cart') ?></span>
+                                        </button>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                <?php } ?>
 
-<?php 
-	}
+            </div>
+        </div>
+
+        <script>
+            require([
+                'jquery',
+                'feature'
+            ], function () {
+                'use strict';
+                jQuery("#feature-products").owlCarousel({
+                    autoPlay: 3000, //3000 Set AutoPlay to 3 seconds
+                    margin: 10,
+                    items: 4,
+                    itemsDesktop: [1199, 4],
+                    itemsDesktopSmall: [979, 3],
+                    itemsTablet: [768, 2],
+                    itemsMobile: [479, 1],
+                    navigation: true,
+                    pagination: false
+                });
+            });
+        </script>
+
+        <?php
+    }
 }
 ?>
