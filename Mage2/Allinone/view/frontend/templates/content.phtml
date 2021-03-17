@@ -1,0 +1,99 @@
+<?php
+/**
+ * Mage2developer
+ * Copyright (C) 2021 Mage2developer
+ *
+ * @category Mage2developer
+ * @package Mage2_Allinone
+ * @copyright Copyright (c) 2021 Mage2developer
+ * @author Mage2developer <mage2developer@gmail.com>
+ */
+
+/** @var $block \Mage2\Allinone\Block\ProductCollection */
+$blockType    = $block->getBlockType();
+$blockEnabled = $block->getBlockEnabled($blockType);
+
+if ($blockEnabled) {
+    $productCollection = $block->getBlockProductCollection($blockType);
+    $productCount      = $productCollection->count();
+
+    if ($productCount > 0) {
+        ?>
+        <div class="main-block">
+            <div class="block-title">
+                <h3><?= /* @noEscape */
+                    $block->getBlockTitle($blockType) ?></h3>
+            </div>
+            <div id="block-content-<?= /* @noEscape */
+            $blockType ?>" class="owl-carousel owl-theme feature-products"><?php
+                foreach ($productCollection as $product) {
+                    $productData = $block->getProductById($product->getId());
+                    $productUrl  = $productData->getProductUrl();
+                    $imageUrl    = $block->getProductImageUrl($productData);
+
+                    ?>
+                    <div class="product-item">
+                    <a href="<?= /* @noEscape */ $productUrl ?>" class="item-img">
+                        <img src="<?= /* @noEscape */ $imageUrl ?>"
+                             alt="<?= /* @noEscape */ $productData->getName() ?>"/>
+                    </a>
+                    <a href="<?= /* @noEscape */ $productUrl ?>" class="item-name">
+                        <?= /* @noEscape */ $productData->getName() ?>
+                    </a>
+                    <div class="item-detail">
+                        <div class="item-price">
+                            <?= /* @noEscape */ $block->getPrice($productData) ?>
+                        </div>
+                        <div class="item-action">
+                            <div class="item-addtocart">
+                                <?php if ($productData->getTypeInstance()->hasRequiredOptions($productData)) : ?>
+                                    <button class="action tocart primary"
+                                            data-mage-init='{"redirectUrl":{"url":"<?= /* @noEscape */
+                                            $block->getAddToCartButtonUrl($productData) ?>"}}'
+                                            type="button"
+                                            title="<?= /* @noEscape */
+                                            __('Add to Cart') ?>">
+                                        <span><?= /* @noEscape */
+                                            __('Add to Cart') ?></span>
+                                    </button>
+                                <?php else:
+                                    $postData = $block->getAddToCartButtonPostData($productData); ?>
+                                    <button class="action tocart primary"
+                                            data-post='<?= /* @noEscape */ $postData; ?>'
+                                            type="button"
+                                            title="<?= /* @noEscape */ __('Add to Cart') ?>">
+                                        <span><?= /* @noEscape */ __('Add to Cart') ?></span>
+                                    </button>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                    </div><?php
+                }
+                ?></div>
+        </div>
+
+        <script>
+            require([
+                'jquery',
+                'feature'
+            ], function () {
+                'use strict';
+                var blockTypeVal = "<?php echo $blockType; ?>";
+                jQuery("#block-content-" + blockTypeVal).owlCarousel({
+                    autoPlay: 3000, //3000 Set AutoPlay to 3 seconds
+                    margin: 10,
+                    items: 4,
+                    itemsDesktop: [1199, 4],
+                    itemsDesktopSmall: [979, 3],
+                    itemsTablet: [768, 2],
+                    itemsMobile: [479, 1],
+                    navigation: true,
+                    pagination: false
+                });
+            });
+        </script>
+        <?php
+    }
+}
+?>

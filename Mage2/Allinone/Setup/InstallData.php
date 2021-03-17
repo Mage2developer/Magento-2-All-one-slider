@@ -1,8 +1,12 @@
 <?php
 /**
- * Product Name: Mage2 All in one
- * Module Name: Mage2_Allinone
- * Created By: Yogesh Shishangiya
+ * Mage2developer
+ * Copyright (C) 2021 Mage2developer
+ *
+ * @category Mage2developer
+ * @package Mage2_Allinone
+ * @copyright Copyright (c) 2021 Mage2developer
+ * @author Mage2developer <mage2developer@gmail.com>
  */
 
 declare(strict_types=1);
@@ -53,28 +57,28 @@ class InstallData implements InstallDataInterface
             \Magento\Catalog\Model\Product::ENTITY,
             'is_featured',
             [
-            'group' => 'Product Details',
-            'type' => 'int',
-            'sort_order' => 102,
-            'backend' => '',
-            'frontend' => '',
-            'label' => 'Featured',
-            'input' => 'boolean',
-            'class' => '',
-            'source' => '',
-            'global' => \Magento\Catalog\Model\ResourceModel\Eav\Attribute::SCOPE_GLOBAL,
-            'visible' => true,
-            'required' => false,
-            'user_defined' => true,
-            'default' => 0,
-            'searchable' => false,
-            'filterable' => false,
-            'comparable' => false,
-            'visible_on_front' => false,
-            'used_in_product_listing' => true,
-            'unique' => false,
-            'apply_to' => 'simple,configurable,virtual,bundle,downloadable'
-                ]
+                'group' => 'Product Details',
+                'type' => 'int',
+                'sort_order' => 102,
+                'backend' => '',
+                'frontend' => '',
+                'label' => 'Featured',
+                'input' => 'boolean',
+                'class' => '',
+                'source' => '',
+                'global' => \Magento\Catalog\Model\ResourceModel\Eav\Attribute::SCOPE_GLOBAL,
+                'visible' => true,
+                'required' => false,
+                'user_defined' => true,
+                'default' => 0,
+                'searchable' => false,
+                'filterable' => false,
+                'comparable' => false,
+                'visible_on_front' => false,
+                'used_in_product_listing' => true,
+                'unique' => false,
+                'apply_to' => 'simple,configurable,virtual,bundle,downloadable'
+            ]
         );
     }
 }

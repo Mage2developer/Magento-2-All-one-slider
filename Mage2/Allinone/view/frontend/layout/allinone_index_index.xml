@@ -1,19 +1,39 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Product Name: Mage2 All in one
- * Module Name: Mage2_Allinone
- * Created By: Yogesh Shishangiya
+ * Mage2developer
+ * Copyright (C) 2021 Mage2developer
+ *
+ * @category Mage2developer
+ * @package Mage2_Allinone
+ * @copyright Copyright (c) 2021 Mage2developer
+ * @author Mage2developer <mage2developer@gmail.com>
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
       xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Mage2\Allinone\Block\Index" name="feature" template="feature.phtml"/>
-            <block class="Mage2\Allinone\Block\Index" name="new" template="new.phtml"/>
-            <block class="Mage2\Allinone\Block\Index" name="most-viewed" template="most-viewed.phtml"/>
-            <block class="Mage2\Allinone\Block\Index" name="best-seller" template="best-seller.phtml"/>
+            <block class="Mage2\Allinone\Block\ProductCollection" name="allinone.featured" template="Mage2_Allinone::content.phtml">
+                <arguments>
+                    <argument name="block_type" xsi:type="string">featured</argument>
+                </arguments>
+            </block>
+            <block class="Mage2\Allinone\Block\ProductCollection" name="allinone.new" template="Mage2_Allinone::content.phtml">
+                <arguments>
+                    <argument name="block_type" xsi:type="string">new</argument>
+                </arguments>
+            </block>
+            <block class="Mage2\Allinone\Block\ProductCollection" name="allinone.mostviewed" template="Mage2_Allinone::content.phtml">
+                <arguments>
+                    <argument name="block_type" xsi:type="string">mostviewed</argument>
+                </arguments>
+            </block>
+            <block class="Mage2\Allinone\Block\ProductCollection" name="allinone.bestseller" template="Mage2_Allinone::content.phtml">
+                <arguments>
+                    <argument name="block_type" xsi:type="string">bestseller</argument>
+                </arguments>
+            </block>
         </referenceContainer>
     </body>
 </page>

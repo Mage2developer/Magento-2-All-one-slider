@@ -14,13 +14,13 @@
 </ul>
 <p>This module provide Feature product slider , New product slider, Bestseller product slider, Most viewed product slider. You can add below code in cms page or static block and slider will be appeared.</p>
 <p><b>1) Bestseller </b></p>
-<p>{{block class="Mage2\Allinone\Block\Index" template="Mage2_Allinone::best-seller.phtml"}}</p>
+<p>{{block class="Mage2\Allinone\Block\ProductCollection" name="allinone.bestseller" template="Mage2_Allinone::content.phtml" block_type="bestseller"}}</p>
 <p><b> 2) Feature Product </b></p>
-<p>{{block class="Mage2\Allinone\Block\Index" template="Mage2_Allinone::feature.phtml"}}</p>
+<p>{{block class="Mage2\Allinone\Block\ProductCollection" name="allinone.featured" template="Mage2_Allinone::content.phtml" block_type="featured"}}</p>
 <p><b> 3) Most viewed Product </b></p>
-<p>{{block class="Mage2\Allinone\Block\Index" template="Mage2_Allinone::most-viewed.phtml"}}</p>
+<p>{{block class="Mage2\Allinone\Block\ProductCollection" name="allinone.mostviewed" template="Mage2_Allinone::content.phtml" block_type="mostviewed"}}</p>
 <p><b> 4) New Product </b></p>
-<p>{{block class="Mage2\Allinone\Block\Index" template="Mage2_Allinone::new.phtml"}}</p>
+<p>{{block class="Mage2\Allinone\Block\ProductCollection" name="allinone.new" template="Mage2_Allinone::content.phtml" block_type="new"}}</p>
 <p></p>
 <p>In the case of any other queries regarding this extension:</p>
 <p>Contact us at <b>mage2developer@gmail.com || shishangiya.yogesh@gmail.com </b> or Skype : <b>mage2developer</b> and we will be all happy to assist you!</p>

@@ -1,24 +1,32 @@
 /**
- * Product Name: Mage2 All in one
- * Module Name: Mage2_Allinone
- * Created By: Yogesh Shishangiya
+ * Mage2developer
+ * Copyright (C) 2021 Mage2developer
+ *
+ * @category Mage2developer
+ * @package Mage2_Allinone
+ * @copyright Copyright (c) 2021 Mage2developer
+ * @author Mage2developer <mage2developer@gmail.com>
  */
 
-
-.feature-item-img, .most-viewed-img, .new-item-img, .best-item-img {
+.allinone-index-index h1.page-title {
+    font-size: 30px;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+.item-img {
     float: left;
     clear: both;
     width: 100%;
     text-align: center;
 }
 
-.feature-item-name, .most-viewed-name, .new-item-name, .best-item-name {
+.item-name {
     text-align: center;
     width: 100%;
     float: left;
 }
 
-.feature-item-detail, .most-viewed-detail, .new-item-detail, .best-item-detail {
+.item-detail {
     float: left;
     clear: both;
     margin-top: 10px;
@@ -26,6 +34,6 @@
     width: 100%;
 }
 
-.feature-item-price, .most-viewed-price, .new-item-price, .best-item-price {
+.item-price {
     margin-bottom: 10px;
 }

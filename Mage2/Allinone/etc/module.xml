@@ -1,13 +1,19 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Product Name: Mage2 All in one
- * Module Name: Mage2_Allinone
- * Created By: Yogesh Shishangiya
+ * Mage2developer
+ * Copyright (C) 2021 Mage2developer
+ *
+ * @category Mage2developer
+ * @package Mage2_Allinone
+ * @copyright Copyright (c) 2021 Mage2developer
+ * @author Mage2developer <mage2developer@gmail.com>
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
     <module name="Mage2_Allinone">
+        <sequence>
+        </sequence>
     </module>
 </config>
